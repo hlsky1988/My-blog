@@ -15,15 +15,13 @@ import music from '~/components/neteaseMusic.vue'
 export default {
   data() {
     return {
-      play:true
+      play:true,
     }
   },
   components: {
     music
   },
   mounted() {
-    console.log(this);
-    
     this.$refs.play.onclick = ()=> {
       this.play = !this.play
       if (!this.play) {
@@ -32,7 +30,7 @@ export default {
         this.$refs.play.classList.add('my-face')
       }
     }
-  },
+  }
 }
 </script>
 
@@ -43,7 +41,7 @@ export default {
   left: 0;
   top: 0;
   .avatar
-    width 266px
+    width 225px
 
 @keyframes haha {
   2%, 24%, 80% {

@@ -1,0 +1,22 @@
+code {
+  display: inline-block;
+  background-color: #e3fbf4;
+  padding: 10px;
+  border-radius: 5px;
+  /* font-family: monospace; */
+  font-family: Monaco;
+  /* font-weight: 700; */
+}
+.hljs-string {
+  color: #3c4419;
+  color: #38509e;
+}
+/* .hljs-params, .hljs-class .hljs-title {
+  color: #ab762d;
+} */
+.hljs-params, .hljs-class .hljs-title {
+  color: #e08012;
+}
+.hljs-string, .hljs-type, .hljs-built_in, .hljs-builtin-name, .hljs-selector-id, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-addition, .hljs-variable, .hljs-template-variable {
+  color: #3a3721;
+}

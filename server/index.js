@@ -2,6 +2,7 @@
 const Koa = require('koa')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
+var cors = require('koa-cors');
 
 const app = new Koa()
 const host = process.env.HOST || '127.0.0.1'
@@ -20,6 +21,14 @@ async function start() {
     const builder = new Builder(nuxt)
     await builder.build()
   }
+
+  // 解决跨域问题
+  app.use(cors());
+
+  app.use(async (ctx, next) => {
+    await next();
+    // console.log(`${ctx.method} ${ctx.url}`);
+  });
 
   app.use(ctx => {
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
