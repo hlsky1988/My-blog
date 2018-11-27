@@ -1,39 +1,18 @@
-/* code {
-  display: inline-block;
-  background-color: #e3fbf4;
-  padding: 10px;
-  border-radius: 5px;
-  font-family: monospace;
-  font-family: Monaco;
-  font-weight: 700;
-}
-.hljs-string {
-  color: #3c4419;
-  color: #38509e;
-}
-.hljs-params, .hljs-class .hljs-title {
-  color: #ab762d;
-}
-.hljs-params, .hljs-class .hljs-title {
-  color: #e08012;
-}
-.hljs-string, .hljs-type, .hljs-built_in, .hljs-builtin-name, .hljs-selector-id, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-addition, .hljs-variable, .hljs-template-variable {
-  color: #3a3721;
-} */
-
-
 /*对 markdown 样式的补充*/
 pre {
-  /* display: block; */
+  display: inline-block;
   padding: 10px;
-  margin: 0 0 10px;
   font-size: 14px;
-  /* line-height: 1.42857143; */
-  color: #abb2bf;
-  background: #282c34;
-  word-break: break-all;
-  word-wrap: break-word;
-  overflow: auto;
+  color: #d4d6d8;
+  background: #4a4c4f;
+  margin-left: 20px;
+  border-radius: 5px;
+}
+code {
+  font-family: Monaco;
+}
+hr {
+  margin-top: 10px;
 }
 h1,h2,h3,h4,h5,h6{
   margin-top: 1em;
@@ -52,8 +31,8 @@ p > code:not([class]) {
 }
 p img{
   /* 图片居中 */
-  margin: 0 auto;
-  display: flex;
+  /* margin: 0 auto;
+  display: flex; */
 }
 
 #content {
@@ -74,4 +53,11 @@ p img{
 
 #content .desc a {
   color: #009a61;
+}
+
+.hljs-comment, .hljs-deletion, .hljs-meta {
+  color: #f5f4f3;
+}
+.hljs-meta-keyword {
+  color: #f92672;
 }

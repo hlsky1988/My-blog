@@ -7,7 +7,7 @@
     4544564654 <br/>
     4544564654 <br/> -->
     <div ref="text" class="text"></div>
-    <Icon class="goTop" type="ios-arrow-up" size='36'/>
+    <!-- <Icon class="goTop" type="ios-arrow-up" size='36'/> -->
 
   </section>
 </template>
@@ -30,7 +30,7 @@ marked.setOptions({
   pedantic: false,
   sanitize: false,
   smartLists: true,
-  smartypants: false,
+  smartypants: true,
   highlight: function (code) {
     return hljs.highlightAuto(code).value;
   }
@@ -47,10 +47,11 @@ export default {
   },
   mounted() {
     // this.$refs.text.innerHTML = marked('#text \n - 00 \n ``` \n 4454 \n ```', { sanitize: true })
-    this.$axios.get('/export.md')
+    // this.$axios.get('/maekdown/export.md')
+    this.$axios.get('/maekdown/iview.md')
     .then( (response)=> {
       console.log(response);
-      this.$refs.text.innerHTML = marked(response.data, { sanitize: true })
+      this.$refs.text.innerHTML = marked(response.data,{ sanitize: false })
     })
   },
 }
@@ -71,9 +72,10 @@ export default {
     bottom 100px
     right 100px
   .text
-    padding 40px;
-    border 1px solid #d9dbde;
-    border-radius: 5px;
+    padding 40px
+    border 1px solid #d9dbde
+    border-radius 5px
+    background-color #fff
     &:hover 
       box-shadow: 1px 1px 10px 1px #d9dbde;
       transform translateY(-1px)

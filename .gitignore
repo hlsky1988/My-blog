@@ -80,3 +80,4 @@ dist
 # IDE
 .idea
 static/.DS_Store
+.DS_Store

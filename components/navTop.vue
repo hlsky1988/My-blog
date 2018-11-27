@@ -5,7 +5,10 @@
         首页
       </MenuItem>
       <MenuItem name="2">
-        归档
+        Mac/Linux
+      </MenuItem>
+      <MenuItem name="3">
+        分享
       </MenuItem>
     </Menu>
   </div>

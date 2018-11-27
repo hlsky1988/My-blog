@@ -15,7 +15,11 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      // { rel:'stylesheet', href:'https://cdn.bootcss.com/minireset.css/0.0.2/minireset.css' }
+    ],
+    script: [
+      // { src : 'https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js' }
     ]
   },
 
