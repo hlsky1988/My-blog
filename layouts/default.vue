@@ -22,7 +22,7 @@ export default {
       // https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js
       var script = document.createElement('script')
       var script2 = document.createElement('script')
-      console.log(script)
+      // console.log(script)
       script.src = 'https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js'
       script.color = '0,0,255'
       script.opacity = '0.6'

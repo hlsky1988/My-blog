@@ -49,6 +49,7 @@ export default {
     // this.$refs.text.innerHTML = marked('#text \n - 00 \n ``` \n 4454 \n ```', { sanitize: true })
     // this.$axios.get('/maekdown/export.md')
     this.$axios.get('/maekdown/iview.md')
+    // this.$axios.get('/maekdown/img-upload.md')
     .then( (response)=> {
       console.log(response);
       this.$refs.text.innerHTML = marked(response.data,{ sanitize: false })

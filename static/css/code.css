@@ -1,15 +1,16 @@
 /*对 markdown 样式的补充*/
 pre {
-  display: inline-block;
-  padding: 10px;
-  font-size: 14px;
-  color: #d4d6d8;
-  background: #4a4c4f;
+  display: block;
   margin-left: 20px;
-  border-radius: 5px;
 }
 code {
+  display: inline-block;
+  font-size: 14px;
   font-family: Monaco;
+  color: #eee;
+  background: #292A37;
+  padding: 15px;
+  border-radius: 5px;
 }
 hr {
   margin-top: 10px;
@@ -51,13 +52,10 @@ p img{
   padding-bottom: 10px;
 }
 
-#content .desc a {
-  color: #009a61;
-}
-
-.hljs-comment, .hljs-deletion, .hljs-meta {
-  color: #f5f4f3;
+/* Asam */
+.hljs-meta {
+  color: #E3E967;
 }
 .hljs-meta-keyword {
-  color: #f92672;
+  color: #EE86C7;
 }
