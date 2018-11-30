@@ -16,10 +16,10 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      // { rel:'stylesheet', href:'https://cdn.bootcss.com/minireset.css/0.0.2/minireset.css' }
+      { rel:'stylesheet', href:'/prism/prism.css' },
     ],
     script: [
-      // { src : 'https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js' }
+      { src:'https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js' }
     ]
   },
 

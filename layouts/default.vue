@@ -22,15 +22,16 @@ export default {
       // https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js
       var script = document.createElement('script')
       var script2 = document.createElement('script')
-      // console.log(script)
       script.src = 'https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js'
-      script.color = '0,0,255'
-      script.opacity = '0.6'
-      script.zIndex = '-2'
-      script.count = '99'
+      $(script).attr('color','0,0,255').attr('opacity','0.6').attr('zIndex','-2').attr('count','99').appendTo('body');
+      // script.color = '0,0,255'
+      // script.opacity = '0.6'
+      // script.zIndex = '-2'
+      // script.count = '99'
       script2.src = 'http://cdn.atool.org/res/ribbon.min.js'
-      document.documentElement.appendChild(script)
+      // document.documentElement.appendChild(script)
       // document.documentElement.appendChild(script2)
+
     })()
 
   }

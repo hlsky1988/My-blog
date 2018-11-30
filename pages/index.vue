@@ -6,7 +6,7 @@
     4544564654 <br/>
     4544564654 <br/>
     4544564654 <br/> -->
-    <div ref="text" class="text"></div>
+    <div ref="text" class="text" v-html="markdown"></div>
     <!-- <Icon class="goTop" type="ios-arrow-up" size='36'/> -->
 
   </section>
@@ -15,11 +15,12 @@
 <script>
 import navLeft from '~/components/navLeft.vue'
 
+import axios from 'axios'
 import marked from 'marked'
 import hljs from 'highlight.js';
 // import 'highlight.js/styles/github.css'
-import 'highlight.js/styles/monokai-sublime.css'
-import '~/static/css/code.css'
+// import 'highlight.js/styles/monokai-sublime.css'
+// import '~/static/css/code.css'
 let renderMD = new marked.Renderer()
 
 marked.setOptions({
@@ -32,11 +33,20 @@ marked.setOptions({
   smartLists: true,
   smartypants: true,
   highlight: function (code) {
-    return hljs.highlightAuto(code).value;
+    // return hljs.highlightAuto(code).value;
   }
 })
 
 export default {
+  asyncData ({ params }) {
+    // return axios.get('http://127.0.0.1:3000/maekdown/img-upload.md')
+    return axios.get('http://127.0.0.1:3000/maekdown/iview.md')
+    .then((res) => {
+      var markdown = marked(res.data,{ sanitize: false })
+      // console.log(markdown);
+      return { markdown }
+    })
+  },
   components: {
     navLeft
   },
@@ -46,14 +56,21 @@ export default {
     }
   },
   mounted() {
-    // this.$refs.text.innerHTML = marked('#text \n - 00 \n ``` \n 4454 \n ```', { sanitize: true })
     // this.$axios.get('/maekdown/export.md')
-    this.$axios.get('/maekdown/iview.md')
+    // this.$axios.get('/maekdown/iview.md')
     // this.$axios.get('/maekdown/img-upload.md')
-    .then( (response)=> {
-      console.log(response);
-      this.$refs.text.innerHTML = marked(response.data,{ sanitize: false })
-    })
+    // .then( (response)=> {
+      // console.log(response);
+      // this.$refs.text.innerHTML = marked(response.data,{ sanitize: false })
+    // })
+    function pre() {
+        $('pre').addClass('line-numbers');
+        var prism = document.createElement('script');
+        prism.src = '/prism/prism.js';
+        document.documentElement.appendChild(prism)
+      }
+
+      pre();
   },
 }
 </script>
@@ -77,8 +94,8 @@ export default {
     border 1px solid #d9dbde
     border-radius 5px
     background-color #fff
+    line-height 1.5;
     &:hover 
       box-shadow: 1px 1px 10px 1px #d9dbde;
-      transform translateY(-1px)
 
 </style>

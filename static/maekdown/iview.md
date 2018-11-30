@@ -54,7 +54,7 @@ We also provide a starter kit [iview-project](https://github.com/iview/iview-pro
 ### Install iView
 
 Using npm:
-```
+```bash
 npm install iview --save
 ```
 
@@ -69,7 +69,7 @@ You can find more info [on the website](https://www.iviewui.com/docs/guide/insta
 
 ## Usage
 
-```vue
+```html
 <template>
     <Slider v-model="value" range />
 </template>
