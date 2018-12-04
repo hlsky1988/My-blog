@@ -1,48 +1,61 @@
 <template>
   <div>
     <nav-top/>
-    <nuxt/>
-    <Page class="page" :current="1" :total="30" size="small" />
-    <BackTop :right='100' :bottom="100"></BackTop>
+
+    <div class="container">
+      <personal/>
+
+      <div class="main">
+        <nuxt/>
+        <Page class="page" :current="1" :total="30" size="small" />
+      </div>
+    </div>
+
+    <BackTop :right="100" :bottom="100"></BackTop>
   </div>
 </template>
 
 <script>
 import navTop from '~/components/navTop.vue'
+import personal from '~/components/personal.vue'
 
 export default {
   data() {
     return {}
   },
   components: {
-    navTop
+    navTop,
+    personal
   },
   mounted() {
     ;(function() {
-      // https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js
       var script = document.createElement('script')
       var script2 = document.createElement('script')
-      script.src = 'https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js'
-      $(script).attr('color','0,0,255').attr('opacity','0.6').attr('zIndex','-2').attr('count','99').appendTo('body');
-      // script.color = '0,0,255'
-      // script.opacity = '0.6'
-      // script.zIndex = '-2'
-      // script.count = '99'
-      script2.src = 'http://cdn.atool.org/res/ribbon.min.js'
-      // document.documentElement.appendChild(script)
-      // document.documentElement.appendChild(script2)
-
+      $(script).attr('src','https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js').attr('color','0,0,255').attr('opacity','0.6').attr('zIndex','-2').attr('count','99').appendTo('body');
+      // $(script2).attr('src','http://cdn.atool.org/res/ribbon.min.js').appendTo('body')
     })()
-
   }
 }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
 body 
-  font-size 14px
-.page {
+  font-size: 14px;
+
+.container 
+  width 1200px
+  min-height 600px
+  margin 0 auto
+  position relative
+  box-sizing border-box
+  .main 
+    width 880px
+    margin 50px 300px 0 0
+
+
+
+.page
   text-align: center;
-  margin-top: 10px;
-}
+  margin-top: 40px;
+
 </style>

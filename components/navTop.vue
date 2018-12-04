@@ -1,24 +1,27 @@
 <template>
-  <div>
-    <Menu class="navTop" mode="horizontal" :theme="theme">
-      <MenuItem class="home" name="1">
-        首页
-      </MenuItem>
-      <MenuItem name="2">
-        Mac/Linux
-      </MenuItem>
-      <MenuItem name="3">
-        分享
-      </MenuItem>
+  <Affix>
+    <Menu class="navTop" mode="horizontal" :theme="theme" active-name="0">
+
+      <nuxt-link v-for="(item, index) in nav" :key="index" :to="item.link">
+        <MenuItem :class="index==0?'home':''" :name='index'>{{ item.name }}</MenuItem>
+      </nuxt-link>
+
     </Menu>
-  </div>
+  </Affix>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      theme: 'light'
+      theme: 'light',
+      nav:[
+        {name:'首页',link:'/'},
+        {name:'前端',link:'/front'},
+        {name:'Mac/Linux',link:'/linux'},
+        {name:'分享',link:'/share'}
+        ],
+      
     }
   },
   components: {

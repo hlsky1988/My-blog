@@ -331,12 +331,12 @@ div.code-toolbar > .toolbar span:focus {
 /* Asam */
 table {
 	border-collapse: collapse;
-	border: 1px solid #333333;
+	border: 1px solid #d9dbde;
 }
 th,td {
 	min-width: 80px;
 	text-align: center;
-	border: 1px solid #333333;
+	border: 1px solid #d9dbde;
 }
 td img {
 	padding: 5px;
