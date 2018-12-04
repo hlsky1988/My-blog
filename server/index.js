@@ -8,6 +8,9 @@ const app = new Koa()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 
+const router = require('../server/router')
+app.use(router.routes());
+
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(app.env === 'production')
@@ -30,7 +33,8 @@ async function start() {
     // console.log(`${ctx.method} ${ctx.url}`);
   });
 
-  app.use(ctx => {
+  app.use((ctx, next) => {
+    next()
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
 
     return new Promise((resolve, reject) => {
