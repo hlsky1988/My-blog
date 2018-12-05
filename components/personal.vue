@@ -2,7 +2,7 @@
   <Affix class="personal" :offset-top="70">
     <Card class="card" :bordered="false">
       <p class="title" slot="title">个人介绍</p>
-      <p>Content of no border type. Content of no border type. Content of no border type. Content of no border type. </p>
+      <p>前端螺丝工一枚</p>
     </Card>
     <Card class="card" :bordered="false">
       <p class="title" slot="title"><Icon class="icon" type="ios-pricetags-outline" />标签</p>
@@ -10,6 +10,8 @@
       <Button class="button" :type="type()" shape="circle">es6</Button>
       <Button class="button" :type="type()" shape="circle">express</Button>
       <Button class="button" :type="type()" shape="circle">分享</Button>
+      <Button class="button" :type="type()" shape="circle">mac</Button>
+      <Button class="button" :type="type()" shape="circle">linux</Button>
       <Button class="button" :type="type()" shape="circle">koa</Button>
       <Button class="button" :type="type()" shape="circle">node</Button>
       <Button class="button" :type="type()" shape="circle">go</Button>

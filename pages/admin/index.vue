@@ -1,12 +1,16 @@
 <template>
   <div>
-    admin
+    admin  {{ params.id }}
   </div>
 </template>
 
 <script>
 export default {
   layout: 'admin',
+  asyncData({ params }) {
+    // console.log(params)
+    return {params}
+  },
   data() {
     return {
 

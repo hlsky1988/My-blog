@@ -1,11 +1,18 @@
 <template>
   <div>
-    front
+    _id /  _id
+    <br>
+    {{ params.id }}
+    
   </div>
 </template>
 
 <script>
 export default {
+  asyncData({ params }) {
+    console.log(params)
+    return {params}
+  },
   data() {
     return {
 
@@ -19,5 +26,5 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
 
- 
+
 </style>

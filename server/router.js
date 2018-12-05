@@ -3,10 +3,10 @@ var router = new Router({
   prefix: '/api'
 });
 
-router.get('/', (ctx, next) => {
+router.get('/',(ctx, next) => {
   ctx.body = 'api test';
-  console.log(ctx);
-  next();
+  // console.log(ctx);
+  // next();
 })
 
 module.exports = router;

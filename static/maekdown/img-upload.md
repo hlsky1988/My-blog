@@ -1,4 +1,4 @@
-# <p align="center">图片上传预览</p>
+# 图片上传预览
 ## 核心API ： FileReader (浏览器)
 - IE 10/11 partial support
 - [caniuse](https://caniuse.com/#search=FileReader)
@@ -62,3 +62,5 @@ $(function(){
     })
   })
 ```
+
+# text

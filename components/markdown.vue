@@ -1,11 +1,16 @@
 <template>
   <div>
-    <h1 class="title">标题</h1>
+    <p class="title">标题</p>
     <div class="info">
-      发布时间：<span class="date">2017年11月29日</span>
-      <Icon type="ios-pricetags-outline" />&nbsp;标签：<span class="tags">vue iview</span>
+      <Icon type="ios-clock-outline" />&nbsp;发布时间：<span class="date mr">2017年11月29日</span>
+      <Icon type="ios-pricetags-outline" />&nbsp;标签：
+      <span class="tags mr">
+        <span class="tag">vue</span>
+        <span class="tag">iview</span>
+      </span>
+      <Icon type="ios-eye-outline" />&nbsp;<span class="num">27041</span>次浏览
     </div>
-    <div ref="text" class="text" v-html="markdown(data)"></div>
+    <div ref="markdown" class="markdown" v-html="markdown(data)"></div>
   </div>
 </template>
 
@@ -56,12 +61,13 @@ export default {
 .title 
   text-align center
   font-size 36px
+  font-weight 700
 .info
   text-align center
   margin-top 10px
-  .date 
+  .mr 
     margin-right 25px
-.text
+.markdown
   padding: 40px;
   // border: 1px solid #d9dbde;
   border-radius: 5px;
