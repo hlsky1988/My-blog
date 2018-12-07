@@ -1,8 +1,11 @@
 const pkg = require('./package')
+let env =  {
+  baseUrl: '6666666'
+}
 
 module.exports = {
   mode: 'universal',
-
+  env: env,
   /*
   ** Headers of the page
   */
@@ -12,7 +15,7 @@ module.exports = {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'renderer', content: 'webkit' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: "Aming's blog" }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

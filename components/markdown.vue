@@ -47,7 +47,7 @@ export default {
     var prism = document.createElement('script')
     prism.src = '/prism/prism.js'
     document.documentElement.appendChild(prism)
-
+    
   },
   methods:{
     markdown:function (data) {
