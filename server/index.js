@@ -1,19 +1,33 @@
-
 const Koa = require('koa')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
-// var cors = require('koa-cors');
+const router = require('../server/router')
+// var cors = require('koa-cors');  // 跨域处理
+const {
+  titleInit,
+  tagsInit,
+  navtopInit,
+  friendlinkInit
+} = require('./controller/blogInit')
 
 const app = new Koa()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 
-const router = require('../server/router')
-
-
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(app.env === 'production')
+
+Promise.all([
+  titleInit(config),
+  tagsInit(config),
+  navtopInit(config),
+  friendlinkInit(config)
+]).then(function() {
+  // console.log(config.env)
+  console.log('blog 数据初始化完成...')
+  start()
+})
 
 async function start() {
   // Instantiate nuxt.js
@@ -25,14 +39,14 @@ async function start() {
     await builder.build()
   }
 
-  app.use(router.routes());
+  app.use(router.routes())
   // 解决跨域问题
   // app.use(cors());
 
   app.use(async (ctx, next) => {
-    await next();
+    await next()
     // console.log(`${ctx.method} ${ctx.url}`);
-  });
+  })
 
   app.use(async (ctx, next) => {
     // await next()
@@ -54,5 +68,3 @@ async function start() {
     badge: true
   })
 }
-
-start()

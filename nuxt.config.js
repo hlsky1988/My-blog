@@ -1,11 +1,8 @@
 const pkg = require('./package')
-let env =  {
-  baseUrl: '6666666'
-}
 
 module.exports = {
   mode: 'universal',
-  env: env,
+  env:{},
   /*
   ** Headers of the page
   */
@@ -15,6 +12,7 @@ module.exports = {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'renderer', content: 'webkit' },
+      { hid: 'keywords', name: 'keywords', content: "Aming 前端 博客 blog" },
       { hid: 'description', name: 'description', content: "Aming's blog" }
     ],
     link: [

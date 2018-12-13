@@ -9,22 +9,30 @@
 import markdown from '~/components/markdown.vue'
 
 export default {
-  async asyncData ({ app,params }) {
-    console.log(process.env.baseUrl)
+  head () {
+    return {
+      title: "Aming's blog - 首页",
+      meta: [
+        { hid: 'description', name: 'description', content: "Aming's blog - 首页" }
+      ]
+    }
+  },
+  async asyncData ({ app,params,title }) {
+    console.log(process.env.title)
     // let { data } = await app.$axios.get('http://127.0.0.1:3000/maekdown/img-upload.md')
     let { data } = await app.$axios.get('http://127.0.0.1:3000/maekdown/iview.md')
     return { data }
-  },
-  components: {
-    markdown
   },
   data(){
     return {
       
     }
   },
+  components: {
+    markdown
+  },
   mounted() {
-
+    console.log(process.env.title);
   },
 }
 </script>
