@@ -8,7 +8,7 @@ router.get('/', async (ctx, next) => {
   await db.navtops.find(function(err, result) {
     // console.log(err + '\n navtops')
     // console.log(result)
-    ctx.body = result
+    ctx.body = {code:200,result}
   })
   // ctx.body = 'api test'
   // console.log(ctx);

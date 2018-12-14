@@ -10,7 +10,7 @@
 <script>
 export default {
   asyncData({ params }) {
-    console.log(params)
+    // console.log(params)
     return {params}
   },
   data() {

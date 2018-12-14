@@ -15,19 +15,13 @@ export default {
   data() {
     return {
       theme: 'light',
-      nav:[
-        {name:'首页',link:'/'},
-        {name:'前端',link:'/front'},
-        {name:'Mac/Linux',link:'/linux'},
-        {name:'分享',link:'/share'},
-        {name:'关于',link:'/about'}
-        ],
+      nav:process.env.navtop,
       
     }
   },
-  components: {
+  mounted() {
 
-  }
+  },
 }
 </script>
 

@@ -18,7 +18,7 @@ export default {
     }
   },
   async asyncData ({ app,params,title }) {
-    console.log(process.env.title)
+    // console.log(process.env.title)
     // let { data } = await app.$axios.get('http://127.0.0.1:3000/maekdown/img-upload.md')
     let { data } = await app.$axios.get('http://127.0.0.1:3000/maekdown/iview.md')
     return { data }
@@ -32,7 +32,7 @@ export default {
     markdown
   },
   mounted() {
-    console.log(process.env.title);
+    // console.log(process.env.title);
   },
 }
 </script>

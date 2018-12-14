@@ -22,12 +22,13 @@ mongoose.connection.once('open', () => { console.log('mongoose 成功连接') })
  */
 function creatModel(str, ob) {
   const schema = new Schema(ob)
-  db[str] = model(collectionsName(str), schema)
+  // db[str] = model(collectionsName(str), schema)
+  db[str] = model(str, schema)
 }
 
-function collectionsName(str) {
-  var tmp = str.replace(/s$/, '')
-  return tmp
-}
+// function collectionsName(str) {
+//   var tmp = str.replace(/s$/, '')
+//   return tmp
+// }
 
 module.exports = { db,creatModel }
