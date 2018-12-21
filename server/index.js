@@ -14,6 +14,10 @@ const app = new Koa()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 
+app.use(router.routes())
+  // 解决跨域问题
+  // app.use(cors());
+
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(app.env === 'production')
@@ -24,9 +28,15 @@ Promise.all([
   navtopInit(config),
   friendlinkInit(config)
 ]).then(function() {
-  // console.log(config.env)
+  // console.log(config)
   console.log('blog 数据初始化完成...')
   start()
+})
+
+app.listen(port, host)
+consola.ready({
+  message: `Server listening on http://${host}:${port}`,
+  badge: true
 })
 
 async function start() {
@@ -38,10 +48,6 @@ async function start() {
     const builder = new Builder(nuxt)
     await builder.build()
   }
-
-  app.use(router.routes())
-  // 解决跨域问题
-  // app.use(cors());
 
   app.use(async (ctx, next) => {
     await next()
@@ -62,9 +68,4 @@ async function start() {
     })
   })
 
-  app.listen(port, host)
-  consola.ready({
-    message: `Server listening on http://${host}:${port}`,
-    badge: true
-  })
 }

@@ -44,17 +44,21 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
 body 
-  font-size: 14px;
+  font-size 14px
+  background-color #dadada !important
+
 
 .container 
   width 1200px
-  min-height 800px
+  min-height 830px
   margin 0 auto
   position relative
   box-sizing border-box
   .main 
     width 880px
     margin-top 50px
+    background-color #fff
+    border-radius: 5px;
 
 
 

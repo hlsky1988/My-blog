@@ -2,7 +2,7 @@ const db = require('../mongoDB')
 
 async function titleInit(config) {
   var result = await db.titles.findOne({ path: '/' })
-  config.env.title = result.title
+  config.env.title = config.head.title = result.title
   for (let i = 0; i < config.head.meta.length; i++) {
     if (config.head.meta[i].name == 'description') {
       config.head.meta[i].content = result.title
@@ -12,11 +12,14 @@ async function titleInit(config) {
 
 async function tagsInit(config) {
   var result = await db.tags.find()
-  var tagsArr = []
+  var tagArr = []
   for (let i = 0; i < result.length; i++) {
-    tagsArr.push(result[i].name)
+    var tmp = {}
+    tmp.name = result[i].name
+    tmp.type = i % 5
+    tagArr.push(tmp)
   }
-  config.env.tags = tagsArr
+  config.env.tags = tagArr
 }
 
 async function navtopInit(config) {
