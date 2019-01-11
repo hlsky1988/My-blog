@@ -1,18 +1,14 @@
 var Router = require('koa-router')
-var db = require('./mongoDB')
 var router = new Router({
   prefix: '/api'
 })
 
-router.get('/', async (ctx, next) => {
-  await db.navtops.find(function(err, result) {
-    // console.log(err + '\n navtops')
-    // console.log(result)
-    ctx.body = {code:200,result}
-  })
-  // ctx.body = 'api test'
-  // console.log(ctx);
-  // next();
-})
+var controller = require('./controller/api')
+
+
+router.get('/list', controller.list)
+router.get('/content', controller.content)
+
+
 
 module.exports = router

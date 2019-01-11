@@ -22,5 +22,13 @@ require('./model');
 //   console.log(result)
 // })
 
+// db.contents.find({_id:"5c33058b2af4d740ec008882"},function (err, result) {
+//   console.log(err + '\n contents');
+//   console.log(result)
+// })
+
+// db.page.findOne({_id:'5c35a29b2af4d7b7766c5b72'},function(err,doc) {
+//   console.log(doc);
+// })
 
 module.exports = db

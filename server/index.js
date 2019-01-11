@@ -11,12 +11,13 @@ const {
 } = require('./controller/blogInit')
 
 const app = new Koa()
-const host = process.env.HOST || '127.0.0.1'
+const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT || 3000
 
+app.use(require('koa-static')(__dirname + '/static'));
 app.use(router.routes())
-  // 解决跨域问题
-  // app.use(cors());
+// 解决跨域问题
+// app.use(cors());
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
@@ -28,7 +29,6 @@ Promise.all([
   navtopInit(config),
   friendlinkInit(config)
 ]).then(function() {
-  // console.log(config)
   console.log('blog 数据初始化完成...')
   start()
 })
@@ -51,7 +51,9 @@ async function start() {
 
   app.use(async (ctx, next) => {
     await next()
-    // console.log(`${ctx.method} ${ctx.url}`);
+    if (!/\.([a-z]+$)$/i.test(ctx.url)) {
+      console.log(`${ctx.method} ${ctx.ip} ${ctx.url}\n`);
+    }
   })
 
   app.use(async (ctx, next) => {

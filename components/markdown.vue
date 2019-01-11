@@ -1,16 +1,16 @@
 <template>
-  <div>
-    <p class="title">标题</p>
+  <div class="wrapper">
+    <p class="title">{{data.title}}</p>
     <div class="info">
-      <Icon type="ios-clock-outline" />&nbsp;发布时间：<span class="date mr">2017年11月29日</span>
+      <Icon type="ios-clock-outline" />&nbsp;发布时间：<span class="date mr">{{date}}</span>
       <Icon type="ios-pricetags-outline" />&nbsp;标签：
       <span class="tags mr">
-        <span class="tag">vue</span>
-        <span class="tag">iview</span>
+        <span class="tag" v-for="(tag, index) in data.tags" :key="index">{{tag}}&nbsp;&nbsp;</span>
       </span>
-      <Icon type="ios-eye-outline" />&nbsp;<span class="num">27041</span>次浏览
+      <Icon type="ios-eye-outline" />&nbsp;<span class="num">{{data.browse}}</span>次浏览
     </div>
-    <div ref="markdown" class="markdown" v-html="markdown(data)"></div>
+    <!-- <div ref="markdown" class="markdown" v-html="data.html"></div> -->
+    <div ref="markdown" class="markdown" v-html="markdown(data.markdown)"></div>
   </div>
 </template>
 
@@ -53,11 +53,23 @@ export default {
     markdown:function (data) {
       return marked(data,{ sanitize: false })
     }
-  }
+  },
+  computed: {
+    date:function() {
+      var date = new Date(this.data.date)
+      var year = date.getFullYear()
+      var month = date.getMonth()+1
+      var day = date.getDate()
+      return `${year}年${month}月${day}日`
+    }
+  },
 }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
+.wrapper
+  padding-top 30px
+  background-color #fff
 .title 
   text-align center
   font-size 36px
@@ -71,7 +83,7 @@ export default {
   padding: 40px;
   // border: 1px solid #d9dbde;
   border-radius: 5px;
-  background-color: #fff;
+  // background-color: #fff;
   line-height: 1.5;
   &:hover
     // box-shadow: 1px 1px 10px 1px #d9dbde;

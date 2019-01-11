@@ -1,17 +1,31 @@
 <template>
   <div>
-    _id /  _id
-    <br>
-    {{ params.id }}
-    
+    <markdown :data='data'/>
   </div>
 </template>
 
 <script>
+import markdown from '~/components/markdown.vue'
+
 export default {
-  asyncData({ params }) {
-    // console.log(params)
-    return {params}
+  async asyncData({ app, params }) {
+    // console.log(params.id);
+    // let { data } = await app.$axios.get('http://127.0.0.1:3000/maekdown/img-upload.md')
+    // let { data } = await app.$axios.get('http://127.0.0.1:3000/maekdown/iview.md')
+    let { data } = await app.$axios.get(`/api/content?id=${params.id}`)
+    return { data }
+  },
+  head() {
+    return {
+      title: `${this.data.title} - Aming's blog`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `${this.data.title} - Aming's blog`
+        }
+      ]
+    }
   },
   data() {
     return {
@@ -19,8 +33,11 @@ export default {
     }
   },
   components: {
-
-  }
+    markdown
+  },
+  mounted() {
+    console.log(this.data);
+  },
 }
 </script>
 

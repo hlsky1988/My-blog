@@ -12,7 +12,7 @@ module.exports = {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'renderer', content: 'webkit' },
-      { hid: 'keywords', name: 'keywords', content: "Aming 前端 博客 blog" },
+      { hid: 'keywords', name: 'keywords', content: "Aming,前端,博客,blog" },
       { hid: 'description', name: 'description', content: "Aming's blog" }
     ],
     link: [
@@ -20,7 +20,7 @@ module.exports = {
       { rel:'stylesheet', href:'/prism/prism.css' },
     ],
     script: [
-      { src:'https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js' }
+      { src:'https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js' }
     ]
   },
 

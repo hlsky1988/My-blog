@@ -5,7 +5,11 @@ var { creatModel } = require('./initMDB')
  * @param { Schema配置对象 } ob
  */
 
-creatModel('tags', { name: String })
+creatModel('tags', {
+  name: String,
+  type: Number,
+  path: String
+})
 
 creatModel('titles', { title: String, path: String })
 
@@ -29,5 +33,10 @@ creatModel('contents', {
   tags: Array,
   browse: Number,
   markdown: String,
-  html: String
+  html: String,
+  brief: String
+})
+
+creatModel('page', {
+  pageSize: Number
 })

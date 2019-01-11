@@ -12,11 +12,13 @@ async function titleInit(config) {
 
 async function tagsInit(config) {
   var result = await db.tags.find()
+  console.log(result);
   var tagArr = []
   for (let i = 0; i < result.length; i++) {
     var tmp = {}
     tmp.name = result[i].name
     tmp.type = i % 5
+    tmp.path = result[i].path
     tagArr.push(tmp)
   }
   config.env.tags = tagArr

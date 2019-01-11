@@ -35,8 +35,8 @@ export default {
       var script = document.createElement('script')
       var script2 = document.createElement('script')
       // $(script).attr('src','https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js').attr('color','0,0,255').attr('opacity','0.6').attr('zIndex','-2').attr('count','99').appendTo('body');
-      $(script).attr('src','https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js').attr('color','255,0,0').attr('opacity','0.6').attr('zIndex','-2').attr('count','99').appendTo('body');
       // $(script2).attr('src','http://cdn.atool.org/res/ribbon.min.js').appendTo('body')
+      $(script).attr('src','https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js').attr('color','255,0,0').attr('opacity','0.6').attr('zIndex','-2').attr('count','99').appendTo('body');
     })()
   }
 }
@@ -45,7 +45,8 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus">
 body 
   font-size 14px
-  background-color #dadada !important
+  // background-color #fffbfb !important
+  background-color #edffed !important
 
 
 .container 
@@ -56,12 +57,7 @@ body
   box-sizing border-box
   .main 
     width 880px
-    margin-top 50px
-    background-color #fff
-    border-radius: 5px;
-
-
-
+    margin 50px 0
 
 
 </style>

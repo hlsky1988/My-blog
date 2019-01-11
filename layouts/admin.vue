@@ -6,6 +6,18 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: "后台管理 - Aming's blog",
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: "后台管理 - Aming's blog"
+        }
+      ]
+    }
+  },
   data() {
     return {
 
