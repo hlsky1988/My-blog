@@ -8,7 +8,7 @@ Accept-Encoding: gzip
 Accept-Charset: utf-8
 
 // index 分页
-GET http://127.0.0.1:3000/api/list?page=2 HTTP/1.1
+GET http://127.0.0.1:3000/api/list?page=1&type=linux HTTP/1.1
 
 // 请求文章接口
 GET http://127.0.0.1:3000/api/content?id=5c33058b2af4d740ec008882 HTTP/1.1

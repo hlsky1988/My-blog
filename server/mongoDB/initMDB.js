@@ -1,3 +1,5 @@
+const Koa = require('koa')
+const app = new Koa()
 const mongoose = require('mongoose')
 const { Schema, model } = require('mongoose')
 var db = {}
@@ -10,7 +12,9 @@ const config = {
   useNewUrlParser: true
 }
 
-mongoose.connect( 'mongodb://localhost:27017/blog', config )
+let db_url = app.env == 'development'?"mongodb://hlsky1988:sldunkesam1988@aming660.cn:27017/blog?authSource=admin":"mongodb://hlsky1988:sldunkesam1988@127.0.0.1:27017/blog?authSource=admin"
+// mongoose.connect( 'mongodb://localhost:27017/blog', config )
+mongoose.connect( db_url, config )
 
 mongoose.connection.on('error', err => console.error('连接数据库失败 ' + err))
 mongoose.connection.once('open', () => { console.log('mongoose 成功连接') })

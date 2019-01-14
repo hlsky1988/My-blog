@@ -36,7 +36,7 @@ package.json
 ### pm2守护
 `pm2 start npm --name "blog-ssr" -- run start`
 
-## centos7 部署数据库
+## centos7 部署数据库 及授权连接
 https://www.jianshu.com/p/994bc7b19b26
 
 

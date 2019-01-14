@@ -57,10 +57,11 @@ export default {
   padding-left 2em
   padding-bottom 15px
   background-color rgba(255, 255, 255, 0.5)
-  margin-top 20px
+  margin-top 30px
   &:hover
     background-color #fff
     border-radius 5px
+    box-shadow: 0 1px 6px rgba(0,0,0,.2);
     cursor pointer
   .title 
     font-size 32px

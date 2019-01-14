@@ -12,7 +12,7 @@ async function titleInit(config) {
 
 async function tagsInit(config) {
   var result = await db.tags.find()
-  console.log(result);
+  // console.log(result);
   var tagArr = []
   for (let i = 0; i < result.length; i++) {
     var tmp = {}

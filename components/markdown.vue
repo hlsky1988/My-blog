@@ -9,8 +9,8 @@
       </span>
       <Icon type="ios-eye-outline" />&nbsp;<span class="num">{{data.browse}}</span>次浏览
     </div>
-    <!-- <div ref="markdown" class="markdown" v-html="data.html"></div> -->
-    <div ref="markdown" class="markdown" v-html="markdown(data.markdown)"></div>
+    <div ref="markdown" class="markdown" v-html="data.html"></div>
+    <!-- <div ref="markdown" class="markdown" v-html="markdown(data.markdown)"></div> -->
   </div>
 </template>
 

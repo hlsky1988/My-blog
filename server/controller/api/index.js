@@ -10,12 +10,17 @@ exports.list = async (ctx) => {
     "browse": "$browse",
     "brief": "$brief"
   };
-  // console.log(ctx.query.page);
-  let type = ctx.query.type ? {type:ctx.query.type}:{}
+  let query
+  let tags = await db.tags.findOne({ name: ctx.query.type })
+  if (!tags) {
+    query = ctx.query.type ? {type:ctx.query.type}:{}
+  } else {
+    query = {tags:ctx.query.type}
+  }
   let page = ctx.query.page ? ctx.query.page : 1
   let pageSize = await db.page.findOne({ _id: '5c35a29b2af4d7b7766c5b72' });
-  let result = await db.contents.find(type, param).limit(pageSize.pageSize).skip((page - 1) * pageSize.pageSize).sort({ date: -1 });
-  let total = await db.contents.countDocuments(type);
+  let result = await db.contents.find(query, param).limit(pageSize.pageSize).skip((page - 1) * pageSize.pageSize).sort({ date: -1 });
+  let total = await db.contents.countDocuments(query);
   ctx.body = { code: 200, result, total ,pageSize:pageSize.pageSize }
 }
 
