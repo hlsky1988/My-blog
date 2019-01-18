@@ -6,7 +6,7 @@
           <span class="logo">Aming's blog</span>
         </a> -->
         <nuxt-link v-for="(item, index) in nav" :key="index" :to="item.link">
-          <MenuItem class="logo" v-if="index == 0" >Aming's blog</MenuItem>
+          <MenuItem class="logo" v-if="index == 0" :name='index'>Aming's blog</MenuItem>
           <MenuItem :class="index==1?'home':''" :name='index' v-if="index !== 0">{{ item.name }}</MenuItem>
         </nuxt-link>
       </Menu>
@@ -27,7 +27,8 @@ export default {
     let upDate = localStorage.getItem('upDate')
     let now = new Date().getTime()
     if (!upDate || (now-upDate)>1000*60*10) {
-      let url = '//aming660.cn:8080/api/init'
+      // let url = '//aming660.cn:8080/api/init'
+      let url = '/api/init'
       this.$axios.get(url).then(function(result) {
         if (result.status == 200) {
           localStorage.setItem('title',result.data.title)

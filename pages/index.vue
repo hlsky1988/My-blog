@@ -41,6 +41,7 @@ export default {
   },
   mounted() {
     // console.log(process.env.title);
+    console.log(process.client);
   },
   methods: {
     pageChange(page) {

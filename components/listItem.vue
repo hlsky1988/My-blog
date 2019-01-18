@@ -27,7 +27,7 @@ export default {
     return {}
   },
   mounted() {
-
+    
   },
   computed: {
     date:function() {

@@ -8,10 +8,11 @@ const app = new Koa()
 const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT || 3000
 
-app.use(require('koa-static')(__dirname + '/static'))
-app.use(router.routes())
 // 解决跨域问题
 app.use(cors());
+
+app.use(require('koa-static')(__dirname + '/static'))
+app.use(router.routes())
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
