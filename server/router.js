@@ -5,7 +5,7 @@ var router = new Router({
 
 var controller = require('./controller/api')
 
-
+router.get('/init', controller.init)
 router.get('/list', controller.list)
 router.get('/content', controller.content)
 

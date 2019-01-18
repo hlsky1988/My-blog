@@ -12,7 +12,7 @@
       <span class="num">{{item.browse}}</span>次
     </div>
     <p class="brief">{{item.brief}}</p>
-    <!-- <img src="~/static/images/tags/css.webp" alt class="type"> -->
+
     <img :src="src" alt class="type">
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
     return {}
   },
   mounted() {
-    // console.log(this.item);
+
   },
   computed: {
     date:function() {
@@ -44,7 +44,8 @@ export default {
   },
   methods: {
     itemClick:function() {
-      window.location.href = `/${this.item.type}/${this.item._id}`
+      // window.location.href = `/${this.item.type}/${this.item._id}`
+      this.$router.push(`/${this.item.type}/${this.item._id}`)
     }
   },
 }
@@ -56,11 +57,11 @@ export default {
   position relative
   padding-left 2em
   padding-bottom 15px
-  background-color rgba(255, 255, 255, 0.5)
+  background-color rgba(255, 255, 255, 0.9)
   margin-top 30px
+  border-radius 10px
   &:hover
     background-color #fff
-    border-radius 5px
     box-shadow: 0 1px 6px rgba(0,0,0,.2);
     cursor pointer
   .title 

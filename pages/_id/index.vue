@@ -1,7 +1,8 @@
 <template>
   <div>
     <listItem v-for="(item, index) in list" :key="index" :item="item"/>
-    <Page class="page" :current="page" :total="total" :page-size="pageSize" simple size="small" @on-change='pageChange'/>
+    <Page class="page" :current="page" :total="total" :page-size="pageSize" simple size="small" @on-change='pageChange' v-if="list.length !== 0"/>
+    <p class="no" v-if="list.length == 0">当前分类还没有文章哦~~</p>
   </div>
 </template>
 
@@ -12,7 +13,6 @@ export default {
   async asyncData({ app, params, query }) {
     // console.log(params.id);
     let type = params.id
-    console.log(type);
     let page = query.page?query.page*1:1
     let { data } = await app.$axios.get(`/api/list?page=${page}&type=${type}`)
     return { 
@@ -44,4 +44,8 @@ export default {
 .page
   text-align: center;
   margin-top: 40px;
+.no
+  color #fff
+  font-size 20px
+  font-weight 700
 </style>

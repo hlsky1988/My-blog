@@ -12,7 +12,8 @@ const config = {
   useNewUrlParser: true
 }
 
-let db_url = app.env == 'development'?"mongodb://hlsky1988:sldunkesam1988@aming660.cn:27017/blog?authSource=admin":"mongodb://hlsky1988:sldunkesam1988@127.0.0.1:27017/blog?authSource=admin"
+let db_url = "mongodb://hlsky1988:sldunkesam1988@aming660.cn:27017/blog?authSource=admin"
+// let db_url = "mongodb://hlsky1988:sldunkesam1988@127.0.0.1:27017/blog?authSource=admin"
 // mongoose.connect( 'mongodb://localhost:27017/blog', config )
 mongoose.connect( db_url, config )
 

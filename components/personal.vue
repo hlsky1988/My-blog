@@ -11,15 +11,14 @@
       <a href='https://gitee.com/hlsky2017/my-blog' class="fork"><img src='https://gitee.com/hlsky2017/my-blog/widgets/widget_6.svg' alt='Fork me on Gitee'></img></a>
     </Card>
     <Card class="card" :bordered="false">
-      <p class="title" slot="title"><Icon class="icon" type="ios-pricetags-outline" />标签</p>
-      <!-- <nuxt-link v-for="(item, index) in tags" :key="index" :to="item.name"> -->
-      <a v-for="(item, index) in tags" :key="index" :href="item.path">
-        <Button class="button" :type="typeArr[item.type]" shape="circle">{{ item.name }}</Button>
-      </a>
+      <p class="title" slot="title">标签</p>
+      <nuxt-link v-for="(item, index) in tags" :key="index" :to="item.path">
+        <Button class="button">{{ item.name }}</Button>
+      </nuxt-link>
     </Card>
     <Card class="card" :bordered="false">
-      <p class="title" slot="title"><Icon class="icon" type="ios-link-outline" />友情链接</p>
-      <a v-for="(item, index) in friendlink" :key="index" class="fl" :href="item.link" target="_blank">{{ item.name }}</a>
+      <p class="title" slot="title">推荐</p>
+      <nuxt-link v-for="(item, index) in friendlink" :key="index" class="fl" :to="item.link" target="_blank">{{ item.name }}</nuxt-link>
     </Card>
   </Affix>
 </template>
@@ -28,13 +27,14 @@
 export default {
   data() {
     return {
-      tags:process.env.tags,
+      tags:[],
       typeArr:['success',,'primary','error','info'],
-      friendlink:process.env.friendlink
+      friendlink:[]
     }
   },
   mounted() {
-    console.log(this.tags);
+    this.tags = JSON.parse(localStorage.getItem('tags'))
+    this.friendlink = JSON.parse(localStorage.getItem('friendlinks'))
   },
   methods:{
     
@@ -42,7 +42,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus" scoped>
+<style lang="stylus" rel="stylesheet/stylus">
 .personal
   box-sizing border-box
   width 300px
@@ -50,10 +50,12 @@ export default {
   .card
     line-height 2
     margin-top 25px
+    .ivu-card-head 
+      border-bottom 1px solid #FF4D3A !important
     .ivu-card-body > a 
       color #515a6e
     .title
-      text-align center
+      // text-align center
       font-size 20px
       height 36px
       line-height 36px

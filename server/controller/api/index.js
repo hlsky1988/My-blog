@@ -1,6 +1,27 @@
 const { ctx } = require('koa')
 const db = require('../../mongoDB')
 
+
+exports.init = async (ctx) => {
+  let navtops, friendlinks, tagArr, titleO, title, tags
+  Promise.all([
+    navtops = await db.navtops.find(),
+    friendlinks = await db.friendlinks.find(),
+    tagArr = await db.tags.find(),
+    titleO = await db.titles.findOne({ path: '/' })
+  ]).then(() => {
+    title = titleO.title
+    tags = []
+    for (let i = 0; i < tagArr.length; i++) {
+      let tmp = {}
+      tmp.name = tagArr[i].name
+      tmp.type = i % 5
+      tmp.path = tagArr[i].path
+      tags.push(tmp)
+    }
+    ctx.body = { title, tags, navtops, friendlinks }
+  })
+}
 exports.list = async (ctx) => {
   let param = {
     "type": "$type",
@@ -21,9 +42,8 @@ exports.list = async (ctx) => {
   let pageSize = await db.page.findOne({ _id: '5c35a29b2af4d7b7766c5b72' });
   let result = await db.contents.find(query, param).limit(pageSize.pageSize).skip((page - 1) * pageSize.pageSize).sort({ date: -1 });
   let total = await db.contents.countDocuments(query);
-  ctx.body = { code: 200, result, total ,pageSize:pageSize.pageSize }
+  ctx.body = { result, total ,pageSize:pageSize.pageSize }
 }
-
 exports.content = async (ctx) => {
   // console.log(ctx.query.id);
   let content = await db.contents.findOne({ _id: ctx.query.id })

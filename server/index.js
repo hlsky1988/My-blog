@@ -2,37 +2,22 @@ const Koa = require('koa')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const router = require('../server/router')
-// var cors = require('koa-cors');  // 跨域处理
-const {
-  titleInit,
-  tagsInit,
-  navtopInit,
-  friendlinkInit
-} = require('./controller/blogInit')
+var cors = require('koa-cors');  // 跨域处理
 
 const app = new Koa()
 const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT || 3000
 
-app.use(require('koa-static')(__dirname + '/static'));
+app.use(require('koa-static')(__dirname + '/static'))
 app.use(router.routes())
 // 解决跨域问题
-// app.use(cors());
+app.use(cors());
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(app.env === 'production')
 
-Promise.all([
-  titleInit(config),
-  tagsInit(config),
-  navtopInit(config),
-  friendlinkInit(config)
-]).then(function() {
-  console.log('blog 数据初始化完成...')
-  start()
-})
-
+start()
 app.listen(port, host)
 consola.ready({
   message: `Server listening on http://${host}:${port}`,
@@ -52,7 +37,7 @@ async function start() {
   app.use(async (ctx, next) => {
     await next()
     if (!/\.([a-z]+$)$/i.test(ctx.url)) {
-      console.log(`${ctx.method} ${ctx.ip} ${ctx.url}\n`);
+      console.log(`${ctx.method} ${ctx.ip} ${ctx.url}\n`)
     }
   })
 
@@ -69,5 +54,4 @@ async function start() {
       })
     })
   })
-
 }

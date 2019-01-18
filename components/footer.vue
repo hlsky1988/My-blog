@@ -21,8 +21,10 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus" scoped>
 .footer
   text-align center
-  height 100px
-  background-color #edffed
-  background-color #fff
-  padding-top 32px
+  height 80px
+  background-color #1f7994
+  padding-top 22px
+  p
+    color #fff
+    font-weight 700
 </style>

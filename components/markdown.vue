@@ -70,6 +70,7 @@ export default {
 .wrapper
   padding-top 30px
   background-color #fff
+  border-radius 10px
 .title 
   text-align center
   font-size 36px

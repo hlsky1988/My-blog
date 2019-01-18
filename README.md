@@ -28,16 +28,20 @@ $ yarn run generate
 ```json
 .nuxt
 static
+server
 nuxt.config.js
 package.json
 ```
 - npm install 安装依赖
 - npm start
 ### pm2守护
-`pm2 start npm --name "blog-ssr" -- run start`
+`pm2 start npm --name "blog" -- run start`
 
-## centos7 部署数据库 及授权连接
+## centos7 mongoDB部署及授权连接
 https://www.jianshu.com/p/994bc7b19b26
+
+# centos7 mongoDB开机自启
+https://www.jianshu.com/p/a443cf50cfee
 
 
 ## 关于隐私政策
