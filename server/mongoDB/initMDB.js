@@ -12,11 +12,16 @@ const config = {
   useNewUrlParser: true
 }
 
-let db_url = "mongodb://hlsky1988:sldunkesam1988@aming660.cn:27017/blog?authSource=admin"
-// let db_url = "mongodb://hlsky1988:sldunkesam1988@127.0.0.1:27017/blog?authSource=admin"
 // mongoose.connect( 'mongodb://localhost:27017/blog', config )
-mongoose.connect( db_url, config )
+// let db_host = process.env.NODE_ENV == "development" ? 'aming660.cn' : 'localhost'
+let db_host = 'aming660.cn'
+let db_user = 'hlsky1988'
+let db_passw = 'sldunkesam1988'
+let db_port = 27017
+let db_name = 'blog'
 
+let db_url = `mongodb://${db_user}:${db_passw}@${db_host}:${db_port}/${db_name}?authSource=admin`
+mongoose.connect(db_url, config)
 mongoose.connection.on('error', err => console.error('连接数据库失败 ' + err))
 mongoose.connection.once('open', () => { console.log('mongoose 成功连接') })
 

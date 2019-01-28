@@ -10,13 +10,13 @@ const port = process.env.PORT || 3000
 
 // 解决跨域问题
 app.use(cors());
-
 app.use(require('koa-static')(__dirname + '/static'))
-app.use(router.routes())
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(app.env === 'production')
+
+app.use(router.routes())
 
 start()
 app.listen(port, host)

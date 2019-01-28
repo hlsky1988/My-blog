@@ -22,7 +22,7 @@ export default {
     }
   },
   async asyncData({ app, params, query }) {
-    // console.log(params.id);
+    console.log(params.id);
     let page = query.page?query.page*1:1
     let { data } = await app.$axios.get(`/api/list?page=${page}`)
     return { 
@@ -41,21 +41,32 @@ export default {
   },
   mounted() {
     // console.log(process.env.title);
-    console.log(process.client);
+    // console.log(process.client);
   },
   methods: {
     pageChange(page) {
-      // this.$router.push(`/?page=${page}`)
-      window.location.href = `/?page=${page}`
+      // window.location.href = `/?page=${page}`
+      this.$router.push({path:'/',query:{page:page}})
+      this.$axios
+        .get(`/api/list?page=${page}`)
+        .then(response => {
+          console.log(response.data)
+          this.pageSize = response.data.pageSize
+          this.title = response.data.title
+          this.list = response.data.result
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   },
 }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
-.page {
-  text-align: center;
-  margin-top: 50px;
-  padding-bottom: 25px;
-}
+.page 
+  text-align center
+  margin-top 50px
+  padding-bottom 25px
+
 </style>

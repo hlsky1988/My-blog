@@ -36,7 +36,7 @@ export default {
     markdown
   },
   mounted() {
-    console.log(this.data);
+    
   },
 }
 </script>

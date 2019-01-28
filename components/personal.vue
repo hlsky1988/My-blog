@@ -68,7 +68,7 @@ export default {
     .button
       margin 10px 5px 0 0
     .fl
-      margin-right 10px
+      margin-right 30px
       color #515a6e
     .star
       position relative

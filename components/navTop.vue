@@ -20,7 +20,7 @@ export default {
     return {
       theme: 'light',
       nav:[],
-      
+      title:null,
     }
   },
   beforeMount(){
@@ -28,7 +28,7 @@ export default {
     let now = new Date().getTime()
     if (!upDate || (now-upDate)>1000*60*10) {
       // let url = '//aming660.cn:8080/api/init'
-      let url = '/api/init'
+      let url = process.client?'/api/init':`${location.href}/api/init`
       this.$axios.get(url).then(function(result) {
         if (result.status == 200) {
           localStorage.setItem('title',result.data.title)
@@ -41,6 +41,7 @@ export default {
       })
     }
     this.nav = JSON.parse(localStorage.getItem('navtops'))
+    this.title = localStorage.getItem('title')
   },
   mounted() {
 
