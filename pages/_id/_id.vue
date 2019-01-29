@@ -9,20 +9,17 @@ import markdown from '~/components/markdown.vue'
 
 export default {
   async asyncData({ app, params }) {
-    // console.log(params.id);
-    // let { data } = await app.$axios.get('http://127.0.0.1:3000/maekdown/img-upload.md')
-    // let { data } = await app.$axios.get('http://127.0.0.1:3000/maekdown/iview.md')
     let { data } = await app.$axios.get(`/api/content?id=${params.id}`)
     return { data }
   },
   head() {
     return {
-      title: `${this.data.title} - Aming's blog`,
+      title: `${this.data.title} - ${this.$store.state.title}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `${this.data.title} - Aming's blog`
+          content: `${this.data.title} - ${this.$store.state.title}`
         }
       ]
     }

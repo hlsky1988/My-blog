@@ -45,7 +45,6 @@ exports.list = async (ctx) => {
   ctx.body = { result, total ,pageSize:pageSize.pageSize }
 }
 exports.content = async (ctx) => {
-  // console.log(ctx.query.id);
   let content = await db.contents.findOne({ _id: ctx.query.id })
   content.browse = content.browse + 1
   content.save()

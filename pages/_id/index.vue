@@ -11,7 +11,6 @@ import listItem from '~/components/listItem.vue'
 
 export default {
   async asyncData({ app, params, query }) {
-    // console.log(params.id)
     let type = params.id
     let page = query.page ? query.page * 1 : 1
     let { data } = await app.$axios.get(`/api/list?page=${page}&type=${type}`)
@@ -36,13 +35,9 @@ export default {
       this.$axios
         .get(`/api/list?page=${page}&type=${this.type}`)
         .then(response => {
-          console.log(response.data)
           this.pageSize = response.data.pageSize
           this.title = response.data.title
           this.list = response.data.result
-        })
-        .catch(error => {
-          console.log(error)
         })
     }
   }

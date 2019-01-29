@@ -8,12 +8,12 @@
 export default {
   head() {
     return {
-      title: "后台管理 - Aming's blog",
+      title: `后台管理 - ${this.$store.state.title}`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: "后台管理 - Aming's blog"
+          content: `后台管理 - ${this.$store.state.title}`
         }
       ]
     }

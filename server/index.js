@@ -37,8 +37,10 @@ async function start() {
 
   app.use(async (ctx, next) => {
     await next()
+    // 显示接口请求，不显示资源请求
     if (!/\.([a-z]+$)$/i.test(ctx.url)) {
-      console.log(`${ctx.method} ${ctx.ip} ${ctx.url}\n`)
+      // console.log(`${ctx.method} ${ctx.ip} ${ctx.url}\n`)
+      console.log(`${ctx.method} ${ctx.url}\n`)
     }
   })
 

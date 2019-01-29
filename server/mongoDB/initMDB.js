@@ -13,8 +13,8 @@ const config = {
 }
 
 // mongoose.connect( 'mongodb://localhost:27017/blog', config )
-// let db_host = process.env.NODE_ENV == "development" ? 'aming660.cn' : 'localhost'
-let db_host = 'aming660.cn'
+let db_host = process.env.NODE_ENV == "development" ? 'aming660.cn' : 'localhost'
+// let db_host = 'aming660.cn'
 let db_user = 'hlsky1988'
 let db_passw = 'sldunkesam1988'
 let db_port = 27017

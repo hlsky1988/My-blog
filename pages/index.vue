@@ -11,18 +11,17 @@ import listItem from '~/components/listItem.vue'
 export default {
   head() {
     return {
-      title: "Aming's blog - 首页",
+      title: `${this.$store.state.title} - 首页`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: "Aming's blog - 首页"
+          content: `${this.$store.state.title} - 首页`,
         }
       ]
     }
   },
   async asyncData({ app, params, query }) {
-    console.log(params.id);
     let page = query.page?query.page*1:1
     let { data } = await app.$axios.get(`/api/list?page=${page}`)
     return { 
@@ -40,23 +39,18 @@ export default {
     listItem
   },
   mounted() {
-    // console.log(process.env.title);
-    // console.log(process.client);
+    
   },
   methods: {
     pageChange(page) {
       // window.location.href = `/?page=${page}`
-      this.$router.push({path:'/',query:{page:page}})
+      this.$router.push({path:'/',query:{page}})
       this.$axios
         .get(`/api/list?page=${page}`)
         .then(response => {
-          console.log(response.data)
           this.pageSize = response.data.pageSize
           this.title = response.data.title
           this.list = response.data.result
-        })
-        .catch(error => {
-          console.log(error)
         })
     }
   },

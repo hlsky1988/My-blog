@@ -1,14 +1,14 @@
 <template>
   <div>
     admin  {{ params.id }}
+    <!-- <button @click="$store.commit('increment')">{{ $store.state.counter }}</button> -->
   </div>
 </template>
 
 <script>
 export default {
   layout: 'admin',
-  asyncData({ params }) {
-    // console.log(params)
+  async asyncData({ params, store }) {
     return {params}
   },
   data() {

@@ -19,6 +19,18 @@ import personal from '~/components/personal.vue'
 import comfoot from '~/components/footer.vue'
 
 export default {
+  head() {
+    return {
+      title: `${this.$store.state.title}`,
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'renderer', content: 'webkit' },
+        { hid: 'keywords', name: 'keywords', content: 'Aming,前端,博客,blog' },
+        { hid: 'description', name: 'description', content: `${this.$store.state.title}` }
+      ]
+    }
+  },
   data() {
     return {}
   },
@@ -33,12 +45,19 @@ export default {
       var script2 = document.createElement('script')
       // $(script).attr('src','https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js').attr('color','0,0,255').attr('opacity','0.6').attr('zIndex','-2').attr('count','99').appendTo('body');
       // $(script2).attr('src','http://cdn.atool.org/res/ribbon.min.js').appendTo('body')
-      $(script) .attr( 'src', 'https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js' ) .attr('color', '255,0,0') .attr('opacity', '0.6') .attr('zIndex', '-2') .attr('count', '99') .appendTo('body')
+      $(script)
+        .attr(
+          'src',
+          'https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js'
+        )
+        .attr('color', '255,0,0')
+        .attr('opacity', '0.6')
+        .attr('zIndex', '-2')
+        .attr('count', '99')
+        .appendTo('body')
     })()
   },
-  methods: {
-    
-  },
+  methods: {}
 }
 </script>
 

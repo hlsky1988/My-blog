@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <p>Copyright&nbsp;&copy;&nbsp;Aming's blog&nbsp;&nbsp;&nbsp;2018-2019&nbsp;&nbsp;&nbsp;粤ICP备18067420号</p>
+    <p>Copyright&nbsp;&copy;&nbsp;{{ name }}&nbsp;&nbsp;&nbsp;2018-2019&nbsp;&nbsp;&nbsp;粤ICP备18067420号</p>
     <p>Powered by Vue & Nuxt</p>
   </div>
 </template>
@@ -12,8 +12,10 @@ export default {
 
     }
   },
-  components: {
-
+  computed:{
+    name:function() {
+      return this.$store.state.title
+    }
   }
 }
 </script>

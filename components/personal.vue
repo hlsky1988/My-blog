@@ -27,17 +27,16 @@
 export default {
   data() {
     return {
-      tags:[],
       typeArr:['success',,'primary','error','info'],
-      friendlink:[]
     }
   },
-  mounted() {
-    this.tags = JSON.parse(localStorage.getItem('tags'))
-    this.friendlink = JSON.parse(localStorage.getItem('friendlinks'))
-  },
-  methods:{
-    
+  computed:{
+    tags:function() {
+      return this.$store.state.tags
+    },
+    friendlink:function() {
+      return this.$store.state.friendlinks
+    }
   }
 }
 </script>
