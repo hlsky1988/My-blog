@@ -31,13 +31,13 @@ export default {
   methods: {
     pageChange(page) {
       // window.location.href = `/${this.type}?page=${page}`
-      this.$router.push({path:`/${this.type}`,query:{page}})
       this.$axios
         .get(`/api/list?page=${page}&type=${this.type}`)
         .then(response => {
           this.pageSize = response.data.pageSize
           this.title = response.data.title
           this.list = response.data.result
+          this.$router.push({path:`/${this.type}`,query:{page}})
         })
     }
   }

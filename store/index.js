@@ -5,12 +5,12 @@ import { AST_ForOf } from 'terser';
 Vue.use(Vuex)
 
 const store = () => new Vuex.Store({
-
   state: {
     title: '',
     tags: [],
     navtops: [],
-    friendlinks:[]
+    friendlinks: [],
+    icp:''
   },
   mutations: {
     init (state,data) {
@@ -18,6 +18,7 @@ const store = () => new Vuex.Store({
       state.tags = data.tags
       state.navtops = data.navtops
       state.friendlinks = data.friendlinks
+      state.icp = data.icp
     }
   },
   actions: {

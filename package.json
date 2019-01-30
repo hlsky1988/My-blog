@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development HOST=127.0.0.1 nodemon server/index.js --watch server",
     "build": "nuxt build",
-    "start": "cross-env NODE_ENV=production node server/index.js",
+    "start": "cross-env NODE_ENV=production BASE_URL=http://aming660.cn:3000 node server/index.js",
     "generate": "nuxt generate"
   },
   "dependencies": {

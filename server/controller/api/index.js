@@ -3,14 +3,16 @@ const db = require('../../mongoDB')
 
 
 exports.init = async (ctx) => {
-  let navtops, friendlinks, tagArr, titleO, title, tags
+  let navtops, friendlinks, tagArr, titleO, title, tags,icps,icp
   Promise.all([
     navtops = await db.navtops.find(),
     friendlinks = await db.friendlinks.find(),
     tagArr = await db.tags.find(),
-    titleO = await db.titles.findOne({ path: '/' })
+    titleO = await db.titles.findOne({ path: '/' }),
+    icps = await db.icps.findOne({ _id: '5c514bfefc3ec336487cf232' })
   ]).then(() => {
     title = titleO.title
+    icp = icps.icp
     tags = []
     for (let i = 0; i < tagArr.length; i++) {
       let tmp = {}
@@ -19,7 +21,7 @@ exports.init = async (ctx) => {
       tmp.path = tagArr[i].path
       tags.push(tmp)
     }
-    ctx.body = { title, tags, navtops, friendlinks }
+    ctx.body = { title, tags, navtops, friendlinks, icp }
   })
 }
 exports.list = async (ctx) => {

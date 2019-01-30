@@ -40,3 +40,5 @@ creatModel('contents', {
 creatModel('page', {
   pageSize: Number
 })
+
+creatModel('icps', { icp:String })

@@ -31,4 +31,8 @@ require('./model');
 //   console.log(doc);
 // })
 
+// db.icps.findOne({ _id: '5c514bfefc3ec336487cf232' },function(err,doc) {
+//   console.log(doc);
+// })
+
 module.exports = db

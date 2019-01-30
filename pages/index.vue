@@ -44,13 +44,13 @@ export default {
   methods: {
     pageChange(page) {
       // window.location.href = `/?page=${page}`
-      this.$router.push({path:'/',query:{page}})
       this.$axios
         .get(`/api/list?page=${page}`)
         .then(response => {
           this.pageSize = response.data.pageSize
           this.title = response.data.title
           this.list = response.data.result
+          this.$router.push({path:'/',query:{page}})
         })
     }
   },

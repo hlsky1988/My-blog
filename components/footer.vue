@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <p>Copyright&nbsp;&copy;&nbsp;{{ name }}&nbsp;&nbsp;&nbsp;2018-2019&nbsp;&nbsp;&nbsp;粤ICP备18067420号</p>
+    <p>Copyright&nbsp;&copy;&nbsp;{{ name }}&nbsp;&nbsp;&nbsp;2018-{{ year }}&nbsp;&nbsp;&nbsp;{{ icp }}</p>
     <p>Powered by Vue & Nuxt</p>
   </div>
 </template>
@@ -15,6 +15,12 @@ export default {
   computed:{
     name:function() {
       return this.$store.state.title
+    },
+    year:function() {
+      return new Date().getFullYear()
+    },
+    icp:function() {
+      return this.$store.state.icp
     }
   }
 }
