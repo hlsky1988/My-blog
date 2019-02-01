@@ -4,8 +4,8 @@ const mongoose = require('mongoose')
 const { Schema, model } = require('mongoose')
 var db = {}
 /**
- * 处理 mongoose 关于 URL字符串的警告 , 貌似单服务器没什么用
- * site: https://github.com/Automattic/mongoose/issues/6667
+ * @description 处理 mongoose 关于 URL字符串的警告 , 貌似单服务器没什么用
+ * @copyright   https://github.com/Automattic/mongoose/issues/6667
  */
 const config = {
   // autoIndex: false,
@@ -14,12 +14,13 @@ const config = {
 
 // mongoose.connect( 'mongodb://localhost:27017/blog', config )
 let db_host = process.env.NODE_ENV == "development" ? 'aming660.cn' : 'localhost'
-let db_user = 'hlsky1988'
-let db_passw = 'sldunkesam1988'
+let db_user = 'blog'
+let db_passw = '3389652song'
 let db_port = 27017
 let db_name = 'blog'
 
-let db_url = `mongodb://${db_user}:${db_passw}@${db_host}:${db_port}/${db_name}?authSource=admin`
+// let db_url = `mongodb://${db_user}:${db_passw}@${db_host}:${db_port}/${db_name}?authSource=admin`
+let db_url = `mongodb://${db_user}:${db_passw}@${db_host}:${db_port}/${db_name}?authSource=${db_name}`
 mongoose.connect(db_url, config)
 mongoose.connection.on('error', err => console.error('连接数据库失败 ' + err))
 mongoose.connection.once('open', () => { console.log('mongoose 成功连接') })

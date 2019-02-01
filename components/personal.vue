@@ -1,5 +1,5 @@
 <template>
-  <Affix class="personal" :offset-top="70">
+  <Affix class="personal" :offset-top="0">
     <Card class="card" :bordered="false">
       <p class="title" slot="title">个人介绍</p>
       <p>Aming, 前端螺丝工一枚, 博客纯属闹着玩</p>
@@ -48,7 +48,7 @@ export default {
   float right
   .card
     line-height 2
-    margin-top 25px
+    margin-top 20px
     .ivu-card-head 
       border-bottom 1px solid #FF4D3A !important
     .ivu-card-body > a 

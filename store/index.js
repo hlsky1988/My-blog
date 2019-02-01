@@ -10,7 +10,8 @@ const store = () => new Vuex.Store({
     tags: [],
     navtops: [],
     friendlinks: [],
-    icp:''
+    icp: '',
+    token:''
   },
   mutations: {
     init (state,data) {
@@ -19,6 +20,9 @@ const store = () => new Vuex.Store({
       state.navtops = data.navtops
       state.friendlinks = data.friendlinks
       state.icp = data.icp
+    },
+    login(state, token) {
+      state.token = token
     }
   },
   actions: {
