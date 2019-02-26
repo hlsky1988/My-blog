@@ -43,7 +43,10 @@ export default {
   },
   mounted() {
 
-    $('pre').addClass('line-numbers')
+    // $('pre').addClass('line-numbers')
+    document.querySelectorAll('pre').forEach(ele => {
+      ele.className = 'line-numbers'
+    });
     var prism = document.createElement('script')
     prism.src = '/prism/prism.js'
     document.documentElement.appendChild(prism)

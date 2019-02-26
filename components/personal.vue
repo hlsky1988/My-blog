@@ -1,14 +1,22 @@
 <template>
   <Affix class="personal" :offset-top="0">
+    <div class="tp">
+      <no-ssr>
+        <tp></tp>
+      </no-ssr>
+    </div>
     <Card class="card" :bordered="false">
       <p class="title" slot="title">个人介绍</p>
       <p>Aming, 前端螺丝工一枚, 博客纯属闹着玩</p>
       <Icon class="if24" type="ios-mail" /><span class="mail">aGxza3lAZm94bWFpbC5jb20=</span><br>
+      <a href="https://github.com/hlsky1988/my-blog" target="_blank">
+        <Icon class="if24" type="logo-github" /><span class="mail">https://github.com/hlsky1988/my-blog</span>
+      </a>
       <a href="https://gitee.com/hlsky2017/my-blog" target="_blank">
         <Icon class="if24" type="logo-github" /><span class="mail">https://gitee.com/hlsky2017/my-blog</span>
       </a>
-      <a href='https://gitee.com/hlsky2017/my-blog/stargazers' class="star"><img src='https://gitee.com/hlsky2017/my-blog/badge/star.svg?theme=white' alt='star'></img></a>
-      <a href='https://gitee.com/hlsky2017/my-blog' class="fork"><img src='https://gitee.com/hlsky2017/my-blog/widgets/widget_6.svg' alt='Fork me on Gitee'></img></a>
+      <!-- <a href='https://gitee.com/hlsky2017/my-blog/stargazers' class="star"><img src='https://gitee.com/hlsky2017/my-blog/badge/star.svg?theme=white' alt='star'></img></a>
+      <a href='https://gitee.com/hlsky2017/my-blog' class="fork"><img src='https://gitee.com/hlsky2017/my-blog/widgets/widget_6.svg' alt='Fork me on Gitee'></img></a> -->
     </Card>
     <Card class="card" :bordered="false">
       <p class="title" slot="title">标签</p>
@@ -24,6 +32,8 @@
 </template>
 
 <script>
+import tp from '~/components/tpwidget'
+
 export default {
   data() {
     return {
@@ -37,6 +47,9 @@ export default {
     friendlink:function() {
       return this.$store.state.friendlinks
     }
+  },
+  components:{
+    tp
   }
 }
 </script>
@@ -44,7 +57,7 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus">
 .personal
   box-sizing border-box
-  width 300px
+  width 305px
   float right
   .card
     line-height 2
@@ -73,6 +86,12 @@ export default {
       position relative
       top -6px
       margin 0 8px 0 8px
+  .tp
+    background-color #fff
+    // background-color #1f7994
+    border-radius 5px
+    padding 10px 10px
+    margin-top 20px
 
 .top,.bottom
   text-align center

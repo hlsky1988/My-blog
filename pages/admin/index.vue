@@ -4,13 +4,11 @@
     <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
       <FormItem class="user" prop="user">
         <Input type="text" v-model="formInline.user" placeholder="用户名">
-          <!-- <Icon type="ios-person-add-outline" slot="prepend"></Icon> -->
           <Icon type="md-person" slot="prepend"></Icon>
         </Input>
       </FormItem>
       <FormItem prop="verCode">
         <Input type="text" v-model="formInline.verCode" :maxlength="verCodeMax" placeholder="请先获取验证码" >
-          <!-- <Icon type="ios-lock-outline" slot="prepend"></Icon> -->
           <Icon type="md-lock" slot="prepend"></Icon>
         </Input>
       </FormItem>
@@ -18,7 +16,7 @@
         <Button :disabled="getVered" @click="getVer">{{ verBT }}</Button>
       </FormItem>
       <FormItem>
-        <Button class="loginButton" :disabled="!getVered" type="primary" @click="handleSubmit('formInline')">登录</Button>
+        <Button class="loginButton" :disabled="getVerLen == 0" type="primary" @click="handleSubmit('formInline')">登录</Button>
       </FormItem>
     </Form>
   </Card>
@@ -73,37 +71,59 @@ export default {
         return false
       }
       return true
+    },
+    getVerLen:function() {
+      return this.formInline.verCode.length
     }
   },
   methods: {
     handleSubmit(name) { 
-      if (this.verBT == '点击获取验证码') {
-        this.$Message.warning({
-          content: '要先获取验证码哦~',
-          duration: 5
-        })
-        return
-      }
-      console.log(this.formInline)
+      // if (this.verBT == '点击获取验证码') {
+      //   this.$Message.warning({
+      //     content: '要先获取验证码哦~',
+      //     duration: 5
+      //   })
+      //   return
+      // }
       this.$refs[name].validate(valid => {
         if (valid) {
-          this.$Message.success('Success!')
-          this.$store.commit('login','666666')
+          this.$axios.post('/api/login',this.formInline).then((res)=>{
+            this.$Message.success('登陆成功，正在跳转……')
+            this.$store.commit('login','666666')
+          })
         } else {
-          this.$Message.error('!')
+          this.$Message.error('请完善登陆信息!')
         }
       })
     },
-    getVer() {
+    async getVer() {
+      if (this.formInline.user.trim() == '') {
+        this.$Message.warning({
+          content:'用户名不能为空',
+          duretion:5
+        });
+        return
+      }
       let sec = 300
-      let IntervalID = setInterval(() => {
-        this.verBT = `验证码已发送 ${sec--}s`
-        if (sec<0) {
-          clearInterval(IntervalID)
-          this.verBT = '点击获取验证码'
-        }
-      }, 1000);
+      let result = await this.$axios.post('/api/verCode',{name:this.formInline.user})
+      if (result.data.code == 200) {
+        let IntervalID = setInterval(() => {
+          this.verBT = `验证码已发送 ${sec--}s`
+          if (sec<0) {
+            clearInterval(IntervalID)
+            this.verBT = '点击获取验证码'
+          }
+        }, 1000);
+      }else if (result.data.code == 401) {
+        this.$Message.warning({
+          content:result.data.message,
+          duretion:5
+        });
+      }
     }
+  },
+  mounted(){
+    
   }
 }
 </script>
@@ -120,7 +140,6 @@ body {
   width: 381px;
   height: 300px;
   text-align: center;
-  // background-color: #fff;
   position: fixed;
   top: 50%;
   left: 50%;

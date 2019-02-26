@@ -7,11 +7,12 @@ var db = {}
  * @description 处理 mongoose 关于 URL字符串的警告 , 貌似单服务器没什么用
  * @copyright   https://github.com/Automattic/mongoose/issues/6667
  */
+
 const config = {
   // autoIndex: false,
   useNewUrlParser: true
 }
-
+mongoose.set('useCreateIndex',true)
 // mongoose.connect( 'mongodb://localhost:27017/blog', config )
 let db_host = process.env.NODE_ENV == "development" ? 'aming660.cn' : 'localhost'
 let db_user = 'blog'

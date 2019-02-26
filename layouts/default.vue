@@ -41,23 +41,19 @@ export default {
   },
   mounted() {
     ;(function() {
-      var script = document.createElement('script')
-      var script2 = document.createElement('script')
-      // $(script).attr('src','https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js').attr('color','0,0,255').attr('opacity','0.6').attr('zIndex','-2').attr('count','99').appendTo('body');
+      
+      // var script2 = document.createElement('script')
       // $(script2).attr('src','http://cdn.atool.org/res/ribbon.min.js').appendTo('body')
-      $(script)
-        .attr(
-          'src',
-          'https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js'
-        )
-        .attr('color', '255,0,0')
-        .attr('opacity', '0.6')
-        .attr('zIndex', '-2')
-        .attr('count', '99')
-        .appendTo('body')
+
+      let script = document.createElement('script')
+      script.src = 'https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.js'
+      script.setAttribute('color','255,0,0')
+      script.setAttribute('opacity','0.6')
+      script.setAttribute('zIndex','-2')
+      script.setAttribute('count','99')
+      document.documentElement.appendChild(script)
     })()
-  },
-  methods: {}
+  }
 }
 </script>
 

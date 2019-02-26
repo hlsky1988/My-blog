@@ -42,3 +42,15 @@ creatModel('page', {
 })
 
 creatModel('icps', { icp:String })
+
+creatModel('user', {
+  name: {
+    type: String,
+    unique: true
+  },
+  verCode: String,
+  time: Number,
+  ip: String,
+  token: String,
+  push:String
+})

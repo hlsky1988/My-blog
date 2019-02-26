@@ -2,21 +2,17 @@ const Koa = require('koa')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const router = require('../server/router')
-var cors = require('koa-cors');  // 跨域处理
+const cors = require('koa-cors');  // 跨域处理
+const bodyParser = require('koa-bodyparser')
+const requestIp = require('request-ip')
 
 const app = new Koa()
 const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT || 3000
 
-// 解决跨域问题
-app.use(cors());
-app.use(require('koa-static')(__dirname + '/static'))
-
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(app.env === 'production')
-
-app.use(router.routes())
 
 start()
 app.listen(port, host)
@@ -35,12 +31,19 @@ async function start() {
     await builder.build()
   }
 
+  // 解决跨域问题
+  app.use(cors());
+  app.use(bodyParser())
+  app.use(router.routes())
+  app.use(require('koa-static')(__dirname + '/static'))
+
   app.use(async (ctx, next) => {
     await next()
+    let ip = requestIp.getClientIp(ctx.request);
     // 显示接口请求，不显示资源请求
     if (!/\.([a-z]+$)$/i.test(ctx.url)) {
       // console.log(`${ctx.method} ${ctx.ip} ${ctx.url}\n`)
-      console.log(`${ctx.method} ${ctx.url}\n`)
+      console.log(`${ctx.method} ${ip} ${ctx.url}\n`)
     }
   })
 
