@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { AST_ForOf } from 'terser';
 
 Vue.use(Vuex)
 
@@ -27,8 +26,8 @@ const store = () => new Vuex.Store({
   },
   actions: {
     async nuxtServerInit ({ commit }, { app }) {
-      let data = await app.$axios.get('http://localhost:3000/api/init')
-      commit('init',data.data)
+      let res = await app.$axios.get('http://localhost:3000/api/init')
+      commit('init',res.data)
     }
   }
 })

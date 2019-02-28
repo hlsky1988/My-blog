@@ -62,7 +62,7 @@ exports.verCode = async function(ctx) {
   if (!user) {
     ctx.body = {
       code: 401,
-      message:'用户名输入错误'
+      message:'用户名不存在！'
     }
     return
   }
@@ -90,6 +90,12 @@ exports.verCode = async function(ctx) {
   ctx.body = { code: 200, verCode }
 }
 exports.login = async function(ctx) {
-  
-  ctx.body = { code: 200 }
+  const name = ctx.request.body.user
+  const verCode = ctx.request.body.verCode
+  let user = await db.user.findOne({ name })
+  if (verCode == user.verCode) {
+    ctx.body = { code: 200,token:user.token }
+  } else {
+    ctx.body = { code: 401,message:'验证吗有误,请重新输入！' }
+  }
 }

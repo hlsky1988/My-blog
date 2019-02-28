@@ -1,15 +1,12 @@
 <template>
   <div>
     <no-ssr>
-      <nav-top/>
       <nuxt/>
     </no-ssr>
   </div>
 </template>
 
 <script>
-import navTop from '~/components/navTop.vue'
-
 export default {
   head() {
     return {
@@ -29,7 +26,7 @@ export default {
     }
   },
   components: {
-    navTop
+    
   }
 }
 </script>

@@ -1,29 +1,32 @@
 <template>
-  <Card class="login" :bordered="false">
-    <p class="title" slot="title">{{ title }} - 后台登录</p>
-    <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
-      <FormItem class="user" prop="user">
-        <Input type="text" v-model="formInline.user" placeholder="用户名">
-          <Icon type="md-person" slot="prepend"></Icon>
-        </Input>
-      </FormItem>
-      <FormItem prop="verCode">
-        <Input type="text" v-model="formInline.verCode" :maxlength="verCodeMax" placeholder="请先获取验证码" >
-          <Icon type="md-lock" slot="prepend"></Icon>
-        </Input>
-      </FormItem>
-      <FormItem>
-        <Button :disabled="getVered" @click="getVer">{{ verBT }}</Button>
-      </FormItem>
-      <FormItem>
-        <Button class="loginButton" :disabled="getVerLen == 0" type="primary" @click="handleSubmit('formInline')">登录</Button>
-      </FormItem>
-    </Form>
-  </Card>
+  <div>
+    <navTop></navTop>
+    <Card class="login" :bordered="false">
+      <p class="title" slot="title">{{ title }} - 后台登录</p>
+      <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
+        <FormItem class="user" prop="user">
+          <Input type="text" v-model="formInline.user" placeholder="用户名">
+            <Icon type="md-person" slot="prepend"></Icon>
+          </Input>
+        </FormItem>
+        <FormItem prop="verCode">
+          <Input type="text" v-model="formInline.verCode" :maxlength="verCodeMax" placeholder="请先获取验证码" >
+            <Icon type="md-lock" slot="prepend"></Icon>
+          </Input>
+        </FormItem>
+        <FormItem>
+          <Button :disabled="getVered" @click="getVer">{{ verBT }}</Button>
+        </FormItem>
+        <FormItem>
+          <Button class="loginButton" :disabled="getVerLen == 0" type="primary" @click="handleSubmit('formInline')">登录</Button>
+        </FormItem>
+      </Form>
+    </Card>
+  </div>
 </template>
 
 <script>
-
+import navTop from '~/components/navTop.vue'
 
 export default {
   layout: 'admin',
@@ -88,8 +91,13 @@ export default {
       this.$refs[name].validate(valid => {
         if (valid) {
           this.$axios.post('/api/login',this.formInline).then((res)=>{
-            this.$Message.success('登陆成功，正在跳转……')
-            this.$store.commit('login','666666')
+            if (res.data.code == 200) {
+              this.$store.commit('login',res.data.token)
+              this.$Message.success('登陆成功，正在跳转……')
+              this.$router.push({path:'/admin/home'})
+            }else {
+              this.$Message.error(res.data.message)
+            }
           })
         } else {
           this.$Message.error('请完善登陆信息!')
@@ -122,8 +130,8 @@ export default {
       }
     }
   },
-  mounted(){
-    
+  components:{
+    navTop
   }
 }
 </script>

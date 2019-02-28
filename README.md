@@ -35,7 +35,13 @@ package.json
 - npm install 安装依赖
 - npm start
 ### pm2守护
-`pm2 start npm --name "blog" -- run start`
+`pm2 start npm --watch --name "blog" -- run start`
+
+- mongod 启动mongo服务
+`mongod --config /home/mongoDB/mongodb.conf`
+
+- caddy 
+`caddy -conf="/etc/caddy/caddy.conf"`
 
 ## centos7 mongoDB部署及授权连接
 https://www.jianshu.com/p/994bc7b19b26
